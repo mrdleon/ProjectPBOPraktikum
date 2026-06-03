@@ -120,6 +120,8 @@ public class KendaraanView extends javax.swing.JFrame {
         btnReset = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblKendaraan = new javax.swing.JTable();
+        btnService = new javax.swing.JButton();
+        btnSelesaiService = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -197,6 +199,20 @@ public class KendaraanView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblKendaraan);
 
+        btnService.setText("SERVICE");
+        btnService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnServiceActionPerformed(evt);
+            }
+        });
+
+        btnSelesaiService.setText("SELESAI SERVICE");
+        btnSelesaiService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelesaiServiceActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -206,27 +222,38 @@ public class KendaraanView extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(134, 134, 134)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnSimpan)
-                    .addComponent(btnHapus))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnReset)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtNama)
-                        .addComponent(txtPlat)
-                        .addComponent(txtHarga)
-                        .addComponent(cbJenis, 0, 121, Short.MAX_VALUE)
-                        .addComponent(txtStatus))
-                    .addComponent(btnUpdate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnSimpan)
+                            .addComponent(btnHapus))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnReset)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtNama)
+                                .addComponent(txtPlat)
+                                .addComponent(txtHarga)
+                                .addComponent(cbJenis, 0, 121, Short.MAX_VALUE)
+                                .addComponent(txtStatus))
+                            .addComponent(btnUpdate))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnService)
+                                .addGap(123, 123, 123))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnSelesaiService)
+                                .addGap(99, 99, 99)))))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59))
         );
@@ -264,7 +291,11 @@ public class KendaraanView extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnHapus)
-                            .addComponent(btnReset)))
+                            .addComponent(btnReset))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnService)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSelesaiService))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
@@ -485,6 +516,79 @@ public class KendaraanView extends javax.swing.JFrame {
         resetForm();
     }//GEN-LAST:event_btnResetActionPerformed
 
+    private void btnServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiceActionPerformed
+         if(idKendaraan == 0) {
+
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Pilih kendaraan terlebih dahulu!"
+            );
+
+            return;
+        }
+
+        try {
+
+            String hasil =
+                    controller.serviceKendaraan(
+                            idKendaraan
+                    );
+
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    hasil
+            );
+
+            tampilData();
+
+            resetForm();
+
+        } catch(Exception e) {
+
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    e.getMessage()
+            );
+
+        }
+    }//GEN-LAST:event_btnServiceActionPerformed
+
+    private void btnSelesaiServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelesaiServiceActionPerformed
+        if(idKendaraan == 0) {
+
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Pilih kendaraan terlebih dahulu!"
+            );
+
+            return;
+        }
+
+        try {
+
+            controller.selesaiService(
+                    idKendaraan
+            );
+
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Service selesai!"
+            );
+
+            tampilData();
+
+            resetForm();
+
+        } catch(Exception e) {
+
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    e.getMessage()
+            );
+
+        }
+    }//GEN-LAST:event_btnSelesaiServiceActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -523,6 +627,8 @@ public class KendaraanView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnSelesaiService;
+    private javax.swing.JButton btnService;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cbJenis;

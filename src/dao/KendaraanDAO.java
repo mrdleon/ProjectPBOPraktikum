@@ -191,5 +191,96 @@ public class KendaraanDAO {
         ps.executeUpdate();
 
     }
+    
+    public void updateStatusKendaraan(
+        int idKendaraan,
+        String status
+    ) throws Exception {
+
+        String sql =
+                "UPDATE kendaraan "
+                + "SET status_kendaraan=? "
+                + "WHERE id_kendaraan=?";
+
+        PreparedStatement ps =
+                conn.prepareStatement(sql);
+
+        ps.setString(
+                1,
+                status
+        );
+
+        ps.setInt(
+                2,
+                idKendaraan
+        );
+
+        ps.executeUpdate();
+
+    }
+    
+    public Kendaraan getById(
+        int id
+    ) throws Exception {
+
+        String sql =
+                "SELECT * FROM kendaraan "
+                + "WHERE id_kendaraan=?";
+
+        PreparedStatement ps =
+                conn.prepareStatement(sql);
+
+        ps.setInt(
+                1,
+                id
+        );
+
+        ResultSet rs =
+                ps.executeQuery();
+
+        if(rs.next()) {
+
+            Kendaraan kendaraan;
+
+            String jenis =
+                    rs.getString("jenis");
+
+            if(jenis.equalsIgnoreCase("Mobil")) {
+
+                kendaraan = new Mobil();
+
+            } else {
+
+                kendaraan = new Motor();
+
+            }
+
+            kendaraan.setIdKendaraan(
+                    rs.getInt("id_kendaraan")
+            );
+
+            kendaraan.setNamaKendaraan(
+                    rs.getString("nama_kendaraan")
+            );
+
+            kendaraan.setPlatNomor(
+                    rs.getString("plat_nomor")
+            );
+
+            kendaraan.setHargaSewa(
+                    rs.getDouble("harga_sewa")
+            );
+
+            kendaraan.setStatusKendaraan(
+                    rs.getString("status_kendaraan")
+            );
+
+            return kendaraan;
+
+        }
+
+        return null;
+
+    }
 
 }

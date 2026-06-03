@@ -3,8 +3,6 @@ package model;
 public class Mobil extends Kendaraan
         implements Serviceable {
 
-    private int jumlahKursi;
-
     public Mobil() {
     }
 
@@ -13,8 +11,7 @@ public class Mobil extends Kendaraan
             String namaKendaraan,
             String platNomor,
             double hargaSewa,
-            String statusKendaraan,
-            int jumlahKursi
+            String statusKendaraan
     ) {
 
         super(
@@ -25,30 +22,33 @@ public class Mobil extends Kendaraan
                 statusKendaraan
         );
 
-        this.jumlahKursi = jumlahKursi;
     }
 
-    public int getJumlahKursi() {
-        return jumlahKursi;
-    }
-
-    public void setJumlahKursi(int jumlahKursi) {
-        this.jumlahKursi = jumlahKursi;
-    }
-
-    // Polymorphism
     @Override
     public double hitungBiayaSewa(int hari) {
 
         return getHargaSewa() * hari + 50000;
 
     }
-
-    // Interface
+    
     @Override
-    public void service() {
+    public double hitungBiayaSewa(
+            int hari,
+            double diskon
+    ) {
 
-        System.out.println("Mobil sedang diservice.");
+        double total =
+                hitungBiayaSewa(hari);
+
+        return total -
+                (total * diskon / 100);
+
+    }
+
+    @Override
+    public String service() {
+
+        return "Mobil sedang diservice.";
 
     }
 

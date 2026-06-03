@@ -72,4 +72,9 @@ public abstract class Kendaraan {
     // Abstract Method
     public abstract double hitungBiayaSewa(int hari);
 
+    public abstract double hitungBiayaSewa(
+            int hari,
+            double diskon
+    );
+
 }

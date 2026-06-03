@@ -107,10 +107,11 @@ public class RentalController {
         );
 
     }
-    
+
+    // Overloading 1 (tanpa diskon)
     public double hitungTotalBiaya(
-        String namaKendaraan,
-        int lamaHari
+            String namaKendaraan,
+            int lamaHari
     ) {
 
         Kendaraan kendaraan =
@@ -125,6 +126,54 @@ public class RentalController {
         }
 
         return kendaraan.hitungBiayaSewa(
+                lamaHari
+        );
+
+    }
+
+    // Overloading 2 (dengan diskon)
+    public double hitungTotalBiaya(
+            String namaKendaraan,
+            int lamaHari,
+            double diskon
+    ) {
+
+        Kendaraan kendaraan =
+                dao.getKendaraanByNama(
+                        namaKendaraan
+                );
+
+        if(kendaraan == null) {
+
+            return 0;
+
+        }
+
+        return kendaraan.hitungBiayaSewa(
+                lamaHari,
+                diskon
+        );
+
+    }
+
+    // Method untuk menentukan promo otomatis
+    public double hitungTotalBiayaPromo(
+            String namaKendaraan,
+            int lamaHari
+    ) {
+
+        if(lamaHari >= 3) {
+
+            return hitungTotalBiaya(
+                    namaKendaraan,
+                    lamaHari,
+                    10
+            );
+
+        }
+
+        return hitungTotalBiaya(
+                namaKendaraan,
                 lamaHari
         );
 

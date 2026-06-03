@@ -314,10 +314,10 @@ public class RentalView extends javax.swing.JFrame {
             );
 
             double total =
-                    controller.hitungTotalBiaya(
-                            cbKendaraan.getSelectedItem().toString(),
-                            lamaHari
-                    );
+            controller.hitungTotalBiayaPromo(
+                    cbKendaraan.getSelectedItem().toString(),
+                    lamaHari
+            );
 
             txtTotal.setText(
                     String.valueOf(total)

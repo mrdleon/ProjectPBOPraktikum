@@ -4,6 +4,7 @@ import dao.KendaraanDAO;
 import model.Kendaraan;
 import model.Mobil;
 import model.Motor;
+import model.Serviceable;
 
 import java.util.List;
 
@@ -89,6 +90,51 @@ public class KendaraanController {
             throws Exception {
 
         return dao.getAll();
+
+    }
+    
+    public String serviceKendaraan(
+        int idKendaraan
+    ) throws Exception {
+
+        Kendaraan kendaraan =
+                dao.getById(
+                        idKendaraan
+                );
+
+        if(kendaraan == null) {
+
+            return "Kendaraan tidak ditemukan!";
+
+        }
+
+        if(kendaraan.getStatusKendaraan()
+                .equalsIgnoreCase("Disewa")) {
+
+            return "Kendaraan sedang disewa!";
+
+        }
+
+        Serviceable serviceable =
+                (Serviceable) kendaraan;
+
+        dao.updateStatusKendaraan(
+                idKendaraan,
+                "Diservice"
+        );
+
+        return serviceable.service();
+
+    }
+    
+    public void selesaiService(
+        int idKendaraan
+    ) throws Exception {
+
+        dao.updateStatusKendaraan(
+                idKendaraan,
+                "Tersedia"
+        );
 
     }
 
